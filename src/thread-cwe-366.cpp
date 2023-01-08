@@ -5,17 +5,20 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <thread>
 
 int foo = 0;
-int storenum(int num) {
+
+const auto worker = [](int num) {
     static int counter = 0;
     counter++;
     if (num > foo) foo = num;
-    return foo;
-}
+    return;
+};
 
 int main(int argc, char const *argv[]) {
-        storenum(1);
-        storenum(2);
-        return 0;
+    std::thread thread1(worker, 1);
+    std::thread thread2(worker, 2);
+    printf ("%n", foo);
+    return 0;
 }

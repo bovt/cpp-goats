@@ -6,20 +6,17 @@
 #include <iostream>
 #include <stdio.h>
 #include <pthread.h>
+#include <cstring>
 
 const int STR_MAX = 23;
 
-void fillInName(char *name) {
-    return;
-}
-
-
 char* getName() {
     char name[STR_MAX];
-    fillInName(name);
+    name[0]='S';
+    name[1]='\0';
     return name;
 }
 int main() {
-
+    printf("%s", getName());
     return 0;
 }
